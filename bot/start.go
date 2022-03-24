@@ -1,8 +1,14 @@
 package bot
 
-import "fmt"
+import(
+	"github.com/helltf/go-discord-bot/env"
+)
 
-func StartBot(secret string) bool {
-	fmt.Println(secret)
-	return true
+var (
+	botToken = "DISCORD_BOT_TOKEN"
+)
+
+func CreateBot() *Bot {
+	discordSecret := env.GetEnvVariable(botToken)
+	return &Bot{discordSecret, "!"}
 }
