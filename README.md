@@ -1,1 +1,1 @@
-# Discordbot written in go
+# Discord bot written in go
