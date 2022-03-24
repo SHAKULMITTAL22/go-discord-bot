@@ -18,5 +18,5 @@ func main() {
 
 	discordBot := bot.CreateBot()
 
-	discordBot.Start()
+	discordBot.AddHandler()
 }
