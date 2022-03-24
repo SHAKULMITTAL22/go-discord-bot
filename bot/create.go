@@ -1,21 +1,33 @@
 package bot
 
-import(
-	"github.com/helltf/go-discord-bot/env"
+import (
+	"fmt"
+
 	"github.com/bwmarrin/discordgo"
+	"github.com/helltf/go-discord-bot/env"
 )
 
 var (
 	botToken = "DISCORD_BOT_TOKEN"
 )
 
-func CreateBot() *discordgo.Session {
+func CreateBot()  {
 	discordSecret := env.GetEnvVariable(botToken)
-	bot, err := discordgo.New("Bot " + discordSecret )
+	discordBot, err := discordgo.New("Bot " + discordSecret )
 	
 	if(err != nil){
-		return nil
+		fmt.Printf(err.Error())
 	}
+	discordBot.AddHandler(messageHandler)
 
-	return bot
+	errOpen := discordBot.Open()
+
+	if errOpen != nil {
+		fmt.Println(errOpen.Error())
+	}
+}
+
+
+func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate){
+	fmt.Println(m.Message)
 }
