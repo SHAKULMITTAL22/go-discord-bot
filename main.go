@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
+	LoadEnv()
 	discord_secret := GetEnvVariable("DISCORD_SECRET")
 	bot.StartBot(discord_secret)
 }
