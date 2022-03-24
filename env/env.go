@@ -1,4 +1,4 @@
-package main
+package env
 
 import (
 	"os"
@@ -12,5 +12,5 @@ func GetEnvVariable(key string) string {
 
 func LoadEnv() bool {
 	err := godotenv.Load(".env")
-	return err != nil
+	return err == nil
 }
