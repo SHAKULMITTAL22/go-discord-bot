@@ -16,11 +16,4 @@ func TestGetDiscordSecret(t *testing.T){
 	assert.NotEqual(t, secret, "")
 }
 
-func TestCreateNewBot(t *testing.T){
-	env.LoadEnv("test")
-
-	secret := bot.GetDiscordSecret()
-	bot.CreateNewBot(secret)
-}
-
 
