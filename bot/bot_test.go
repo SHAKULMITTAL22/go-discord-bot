@@ -10,10 +10,16 @@ import (
 
 
 func TestGetDiscordSecret(t *testing.T){
-	env.LoadEnv("test")
+	env.LoadTestEnv()
 
 	secret := bot.GetDiscordSecret()
 	assert.NotEqual(t, secret, "")
 }
 
 
+func TestGetPrefix(t *testing.T){
+	env.LoadTestEnv()
+	prefix := bot.GetPrefix()
+
+	assert.Equal(t, prefix, "!")
+}
