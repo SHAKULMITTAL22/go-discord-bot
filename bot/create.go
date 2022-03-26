@@ -38,13 +38,14 @@ func CreateNewBot(discordSecret string) *discordgo.Session {
 	if err != nil {
 		panic(err)
 	}
+
 	fmt.Println("Succesfully created new Session")
 
 	return discordBot
 }
 
 func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if HasPrefix(m.Content) || m.Author.ID == s.State.User.ID{
+	if HasPrefix(m.Content) || IsSameId(s, m){
 		 return
 	} 
 	
