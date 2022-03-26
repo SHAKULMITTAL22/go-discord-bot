@@ -1,8 +1,6 @@
 package bot
 
 import (
-	"fmt"
-
 	"github.com/bwmarrin/discordgo"
 	"github.com/helltf/go-discord-bot/env"
 )
@@ -43,5 +41,5 @@ func CreateNewBot(discordSecret string) *discordgo.Session {
 }
 
 func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
-	fmt.Println(m.Message)
+	CheckForPrefix(m.Content)
 }
