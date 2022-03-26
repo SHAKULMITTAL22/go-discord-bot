@@ -8,13 +8,13 @@ import (
 
 
 func main() {
-	success := env.LoadEnv()
+	success := env.LoadEnv("prod")
 
 	if !success {
 		fmt.Println("Error while loading env file")
 	}
 
-	bot.CreateBot()
+	bot.CreateNewBotConnection()
 	<-make(chan struct{})
 	return
 }
