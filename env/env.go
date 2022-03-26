@@ -23,7 +23,7 @@ func LoadEnv(environment string) bool {
 
 func getEnvPath(env string) string{
 	if env == "test"{
-		return "../.env"
+		return "../.env.test"
 	}
 	return ".env"
 }
