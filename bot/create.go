@@ -8,26 +8,40 @@ import (
 )
 
 var (
-	botToken = "DISCORD_BOT_TOKEN"
+	BotToken = "DISCORD_BOT_TOKEN"
 )
 
-func CreateBot()  {
-	discordSecret := env.GetEnvVariable(botToken)
-	discordBot, err := discordgo.New("Bot " + discordSecret )
-	
-	if(err != nil){
-		fmt.Printf(err.Error())
-	}
+func CreateNewBotConnection() {
+	discordSecret := GetDiscordSecret()
+	discordBot := CreateNewBot(discordSecret)
 	discordBot.AddHandler(messageHandler)
-
-	errOpen := discordBot.Open()
-
-	if errOpen != nil {
-		fmt.Println(errOpen.Error())
-	}
+	OpenConnection(discordBot)
 }
 
 
-func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate){
+func OpenConnection(discordBot *discordgo.Session){
+	errOpen := discordBot.Open()
+
+	if errOpen != nil {
+		panic(errOpen)
+	}
+}
+
+func GetDiscordSecret() string {
+	return env.GetEnvVariable(BotToken)
+}
+
+func CreateNewBot(discordSecret string) *discordgo.Session {
+
+	discordBot, err := discordgo.New("Bot " + discordSecret)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return discordBot
+}
+
+func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	fmt.Println(m.Message)
 }
