@@ -1,6 +1,8 @@
 package bot
 
 import (
+	"fmt"
+
 	"github.com/bwmarrin/discordgo"
 	"github.com/helltf/go-discord-bot/env"
 )
@@ -36,12 +38,15 @@ func CreateNewBot(discordSecret string) *discordgo.Session {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Succesfully created new Session")
 
 	return discordBot
 }
 
 func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if HasPrefix(m.Content) {
-
-	}
+	if HasPrefix(m.Content) || m.Author.ID == s.State.User.ID{
+		 return
+	} 
+	
+	s.ChannelMessageSend(m.ChannelID, "fsdfs")
 }
