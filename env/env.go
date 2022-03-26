@@ -27,3 +27,11 @@ func getEnvPath(env string) string{
 	}
 	return ".env"
 }
+
+func LoadTestEnv(){
+	success := LoadEnv("test")
+
+	if !success{
+		panic("Error loading env")	
+	}  
+}
