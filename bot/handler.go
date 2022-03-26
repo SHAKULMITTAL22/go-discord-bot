@@ -6,7 +6,7 @@ func handleMessage() string {
 	return ""
 }
 
-func CheckForPrefix(message string) bool {
+func HasPrefix(message string) bool {
 	prefix := GetPrefix()
 	return strings.HasPrefix(message, prefix)
 }

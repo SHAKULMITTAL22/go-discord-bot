@@ -12,7 +12,7 @@ func TestHandlerPrefixCheckHasPrefix(t *testing.T){
 	env.LoadTestEnv()
 
 	message := "!hello"
-	hasPrefix := bot.CheckForPrefix(message)
+	hasPrefix := bot.HasPrefix(message)
 
 	assert.True(t, hasPrefix)
 }
@@ -21,7 +21,7 @@ func TestHandlerPrefixCheckHasNoPrefix(t *testing.T){
 	env.LoadTestEnv()
 
 	message := "hello"
-	hasPrefix := bot.CheckForPrefix(message)
+	hasPrefix := bot.HasPrefix(message)
 
 	assert.False(t, hasPrefix)
 }
@@ -30,7 +30,7 @@ func TestHandlerPrefixCheckHasPrefixSpace(t *testing.T){
 	env.LoadTestEnv()
 
 	message := "! hello"
-	hasPrefix := bot.CheckForPrefix(message)
+	hasPrefix := bot.HasPrefix(message)
 
 	assert.True(t, hasPrefix)
 }

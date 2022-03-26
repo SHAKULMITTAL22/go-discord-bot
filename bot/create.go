@@ -41,5 +41,7 @@ func CreateNewBot(discordSecret string) *discordgo.Session {
 }
 
 func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
-	CheckForPrefix(m.Content)
+	if HasPrefix(m.Content) {
+
+	}
 }
