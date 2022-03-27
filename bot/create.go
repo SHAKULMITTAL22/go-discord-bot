@@ -43,11 +43,3 @@ func CreateNewBot(discordSecret string) *discordgo.Session {
 
 	return discordBot
 }
-
-func messageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if HasPrefix(m.Content) || IsSameId(s, m){
-		 return
-	} 
-	
-	s.ChannelMessageSend(m.ChannelID, "fsdfs")
-}
